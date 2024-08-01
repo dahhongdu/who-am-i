@@ -1,4 +1,6 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, RouterProvider, createBrowserRouter } from "react-router-dom";
+import Login from "./pages/login";
+import Register from "./pages/register";
 
 const routes = createBrowserRouter([
   {
@@ -18,9 +20,7 @@ const routes = createBrowserRouter([
 
 function App() {
   return (
-    <>
-
-    </>
+    <RouterProvider router={routes} />
   )
 }
 
