@@ -9,5 +9,9 @@
     "strict": true,
     "noEmit": true
   },
-  "include": ["vite.config.ts"]
+  "include": [
+    "vite.config.ts",
+    "src/api/api.tsx",
+    "src/constants/constants.ts"
+  ]
 }
