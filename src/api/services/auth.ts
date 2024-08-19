@@ -8,12 +8,12 @@ export const userApi = {
   getKakaoOauth: kakaoAuthURL,
   kakaoAuth: (code: string) => {
     api
-      .get(`${import.meta.env.VITE_KAKAO_LOGIN_URI}?code=${code}`)
+      .get(`${import.meta.env.VITE_KAKAO_CALLBACK_URI}?code=${code}`)
       .then((res) => {
         const data = res.data.data;
         const accessToken: string = data.accessToken;
         const refreshToken: string = data.refreshToken;
-
+        
         if (accessToken) {
           localStorage.setItem(ACCESS_TOKEN, accessToken);
         }
