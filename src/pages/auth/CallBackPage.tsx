@@ -1,10 +1,13 @@
 import { userApi } from '../../api/services/auth';
 
 const CallBackPage = () => {
-  const parseCode = () => {
+  const parseCode = async () => {
     const code: string = window.location.search.substring(6);
-    console.log('code:', code);
-    userApi.kakaoAuth(code);
+    const isLoggedIn: boolean = await userApi.kakaoAuth(code);
+
+    if (isLoggedIn) {
+      alert('로그인 완료!');
+    }
   };
 
   parseCode();
