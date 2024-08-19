@@ -2,18 +2,10 @@ import { userApi } from '../../api/services/auth';
 
 const Login = () => {
   const kakaoUrl = userApi.getKakaoOauth;
+  console.log('kakaourl:', kakaoUrl);
 
   const socialLogin = () => {
-    fetch(kakaoUrl, {
-      redirect: 'manual',
-    })
-      .then((res) => {
-        const redirectURL = res.url;
-        window.location.href = redirectURL;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    window.location.href = kakaoUrl;
   };
 
   return (
