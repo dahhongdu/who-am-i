@@ -1,12 +1,17 @@
-import { ReactNode } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useLoginState } from '../../hooks/hooks';
+import Home from "../../pages/Home";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout = () => {
+  const { isLoggedIn } = useLoginState();
+
   return (
     <>
-      <h1>Layout입니다!</h1>
-      {children}
+      {
+        isLoggedIn ? <Home/> : <Navigate to="/login" />
+      }
     </>
-  );
+  )
 };
 
 export default Layout;

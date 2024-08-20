@@ -2,7 +2,7 @@ import { userApi } from '../../api/services/auth';
 import { useLoginState } from '../../hooks/hooks';
 
 const Login = () => {
-  const { isLoggedIn } = useLoginState()
+  const { isLoggedIn } = useLoginState();
   const kakaoUrl = userApi.getKakaoOauth;
 
   const socialLogin = () => {
@@ -10,10 +10,8 @@ const Login = () => {
   };
 
   if (isLoggedIn === true) {
-    window.location.href = "/home";
+    window.location.href = '/home';
   }
-
-  console.log(isLoggedIn)
 
   return (
     <>

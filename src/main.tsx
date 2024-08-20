@@ -5,12 +5,12 @@ import CallBackPage from './pages/auth/CallBackPage.tsx';
 import Login from './pages/auth/KakaoLogin.tsx';
 import Home from './pages/Home.tsx';
 import { ContextsProvider } from './contexts/contexts.tsx';
-import { AuthenticatedRoute } from './components/AuthenticatedRoute.tsx';
+import Layout from './components/layout/layout.tsx';
 
 const routes = createBrowserRouter([
   {
     path: '/',
-    element: <AuthenticatedRoute />,
+    element: <Layout />,
     children: [
       {
         path: 'home',
