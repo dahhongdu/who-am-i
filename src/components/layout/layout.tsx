@@ -1,6 +1,5 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { useLoginState } from '../../hooks/hooks';
-import Home from "../../pages/Home";
 
 const Layout = () => {
   const { isLoggedIn } = useLoginState();
@@ -8,7 +7,7 @@ const Layout = () => {
   return (
     <>
       {
-        isLoggedIn ? <Home/> : <Navigate to="/login" />
+        isLoggedIn ? <Outlet/> : <Navigate to="/login" />
       }
     </>
   )
