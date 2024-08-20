@@ -1,10 +1,20 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { useLoginState } from '../../hooks/hooks';
 import { ACCESS_TOKEN } from '../../constants/constants';
-
-const isLogin: boolean = localStorage.getItem(ACCESS_TOKEN) !== null;
+import { useEffect } from 'react';
 
 const Layout = () => {
-  return isLogin ? <Outlet /> : <Navigate to="/login" />;
+  const { setIsLoggedIn } = useLoginState();
+
+  useEffect(() => {
+    if (localStorage.getItem(ACCESS_TOKEN) !== null) {
+      setIsLoggedIn(true);
+    } else {
+      window.location.href = '/login';
+    }
+  }, [setIsLoggedIn]);
+
+  return <Outlet />;
 };
 
 export default Layout;

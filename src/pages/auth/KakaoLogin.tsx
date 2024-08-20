@@ -2,7 +2,7 @@ import { userApi } from '../../api/services/auth';
 
 const Login = () => {
   const kakaoUrl = userApi.getKakaoOauth;
-  
+
   const socialLogin = () => {
     window.location.href = kakaoUrl;
   };

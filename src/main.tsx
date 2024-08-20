@@ -5,6 +5,7 @@ import CallBackPage from './pages/auth/CallBackPage.tsx';
 import Login from './pages/auth/KakaoLogin.tsx';
 import Home from './pages/Home.tsx';
 import Layout from './components/layout/layout.tsx';
+import { ContextsProvider } from './contexts/contexts.tsx';
 
 const routes = createBrowserRouter([
   {
@@ -21,15 +22,15 @@ const routes = createBrowserRouter([
     children: [
       {
         path: 'home',
-        element: <Home />
+        element: <Home />,
       },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <>
+  <ContextsProvider>
     <RouterProvider router={routes} />
     <App />
-  </>
+  </ContextsProvider>
 );

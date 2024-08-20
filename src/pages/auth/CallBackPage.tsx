@@ -1,16 +1,17 @@
-import { useNavigate } from 'react-router-dom';
 import { userApi } from '../../api/services/auth';
+import { useLoginState } from '../../hooks/hooks';
 
 const CallBackPage = () => {
-  const navigate = useNavigate();
+  const { setIsLoggedIn } = useLoginState();
 
   const parseCode = async () => {
     const code: string = window.location.search.substring(6);
-    const isLoggedIn: boolean = await userApi.kakaoAuth(code);
+    const isSucceeded: boolean = await userApi.kakaoAuth(code);
 
-    if (isLoggedIn) {
+    if (isSucceeded) {
       console.log('로그인이 성공적으로 완료되었습니다.');
-      navigate(-1);
+      setIsLoggedIn(true);
+      window.location.href = '/home';
     } else {
       console.log('모종의 이유로 로그인이 실패했습니다.. 붐따..');
     }
