@@ -2,8 +2,8 @@ import { ReactNode, createContext, useState } from 'react';
 import { ACCESS_TOKEN } from '../constants/constants';
 
 export const LoginStateContext = createContext<
-  LoginStateContextType | undefined
->(undefined);
+  LoginStateContextType | null
+>(null);
 
 export const ContextsProvider = ({ children }: { children: ReactNode }) => {
   let state: boolean;
