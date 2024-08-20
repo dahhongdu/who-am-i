@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constants/constants';
 import { setCookie } from '../../utils/Cookies';
 import { baseURL, api } from '../api';
@@ -6,6 +7,17 @@ const kakaoAuthURL = baseURL + import.meta.env.VITE_KAKAO_LOGIN_URI;
 
 export const userApi = {
   getKakaoOauth: kakaoAuthURL,
+  isAccessTokenValid: async (token: string): Promise<number> => {
+    const res = await axios.get(
+      'https://kapi.kakao.com/v1/user/access_token_info',
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return res.status;
+  },
   kakaoAuth: async (code: string): Promise<boolean> => {
     try {
       const res = await api.get(
