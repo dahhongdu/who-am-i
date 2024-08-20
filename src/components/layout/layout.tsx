@@ -1,20 +1,12 @@
-import { Outlet } from 'react-router-dom';
-import { useLoginState } from '../../hooks/hooks';
-import { ACCESS_TOKEN } from '../../constants/constants';
-import { useEffect } from 'react';
+import { ReactNode } from 'react';
 
-const Layout = () => {
-  const { setIsLoggedIn } = useLoginState();
-
-  useEffect(() => {
-    if (localStorage.getItem(ACCESS_TOKEN) !== null) {
-      setIsLoggedIn(true);
-    } else {
-      window.location.href = '/login';
-    }
-  }, [setIsLoggedIn]);
-
-  return <Outlet />;
+const Layout = ({ children }: { children: ReactNode }) => {
+  return (
+    <>
+      <h1>Layout입니다!</h1>
+      {children}
+    </>
+  );
 };
 
 export default Layout;

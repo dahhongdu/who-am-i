@@ -9,9 +9,8 @@ const CallBackPage = () => {
     const isSucceeded: boolean = await userApi.kakaoAuth(code);
 
     if (isSucceeded) {
-      console.log('로그인이 성공적으로 완료되었습니다.');
       setIsLoggedIn(true);
-      window.location.href = '/home';
+      window.location.href = '/';
     } else {
       console.log('모종의 이유로 로그인이 실패했습니다.. 붐따..');
     }

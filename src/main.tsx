@@ -4,27 +4,27 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import CallBackPage from './pages/auth/CallBackPage.tsx';
 import Login from './pages/auth/KakaoLogin.tsx';
 import Home from './pages/Home.tsx';
-import Layout from './components/layout/layout.tsx';
 import { ContextsProvider } from './contexts/contexts.tsx';
+import { AuthenticatedRoute } from './components/AuthenticatedRoute.tsx';
 
 const routes = createBrowserRouter([
   {
-    path: '/kakao/callback',
-    element: <CallBackPage />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
     path: '/',
-    element: <Layout />,
+    element: <AuthenticatedRoute />,
     children: [
       {
         path: 'home',
         element: <Home />,
       },
     ],
+  },
+  {
+    path: 'kakao/callback',
+    element: <CallBackPage />,
+  },
+  {
+    path: '/login',
+    element: <Login/>,
   },
 ]);
 
