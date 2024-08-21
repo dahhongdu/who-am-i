@@ -27,7 +27,7 @@ export const ContextsProvider = ({ children }: { children: ReactNode }) => {
       }
     }
   }, []);
-  
+
   return (
     <LoginStateContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       {children}
