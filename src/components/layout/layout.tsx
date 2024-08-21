@@ -1,10 +1,16 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { ACCESS_TOKEN } from '../../constants/constants';
-
-const isLogin: boolean = localStorage.getItem(ACCESS_TOKEN) !== null;
+import { useLoginState } from '../../hooks/hooks';
 
 const Layout = () => {
-  return isLogin ? <Outlet /> : <Navigate to="/login" />;
+  const { isLoggedIn } = useLoginState();
+
+  return (
+    <>
+      {
+        isLoggedIn ? <Outlet/> : <Navigate to="/login" />
+      }
+    </>
+  )
 };
 
 export default Layout;
