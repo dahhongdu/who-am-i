@@ -1,11 +1,12 @@
 import { userApi } from '../../api/services/auth';
+import LoginLayout from '../../components/authLayout/LoginLayout';
 import { useLoginState } from '../../hooks/hooks';
 
 const Login = () => {
   const { isLoggedIn } = useLoginState();
   const kakaoUrl = userApi.getKakaoOauth;
 
-  const socialLogin = () => {
+  const handleLoginBtn = () => {
     window.location.href = kakaoUrl;
   };
 
@@ -14,9 +15,7 @@ const Login = () => {
   }
 
   return (
-    <>
-      <button onClick={socialLogin}>카카오로 시작하기</button>
-    </>
+    <LoginLayout handleLoginBtn={handleLoginBtn}/>
   );
 };
 
