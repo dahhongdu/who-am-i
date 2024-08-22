@@ -7,6 +7,7 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import { createTheme, styled, ThemeProvider } from '@mui/material/styles';
 import kakaoLoginImage from '../../assets/kakao_login.png';
+import { LinearProgress } from '@mui/material';
 
 function Copyright(props: any) {
   return (
@@ -49,9 +50,12 @@ const KakaoButton = styled(Button)`
 // TODO defaultTheme 정리하고 초기화 하는 코드 없애기 
 const defaultTheme = createTheme();
 
-export default function LoginLayout({ handleLoginBtn }: LoginLayoutType) {
+export default function LoginLayout({ handleLoginBtn, isLoggingIn }: LoginLayoutType) {
   return (
     <ThemeProvider theme={defaultTheme}>
+      {
+        isLoggingIn ? <LinearProgress /> : null
+      }
       <Grid container component="main" sx={{ height: '100vh', overflow: 'hidden' }}>
         <CssBaseline />
         <Grid

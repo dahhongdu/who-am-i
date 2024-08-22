@@ -1,3 +1,4 @@
 type LoginLayoutType = {
-  handleLoginBtn: (event: MouseEventHandler<HTMLButtonElement>) => void;
-}
+  isLoggingIn: boolean;
+  handleLoginBtn: ((event: MouseEventHandler<HTMLButtonElement>) => void) | null;
+};

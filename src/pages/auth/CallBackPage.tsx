@@ -1,5 +1,7 @@
+import { LinearProgress } from '@mui/material';
 import { userApi } from '../../api/services/auth';
 import { useLoginState } from '../../hooks/hooks';
+import LoginLayout from '../../components/authLayout/LoginLayout';
 
 const CallBackPage = () => {
   const { setIsLoggedIn } = useLoginState();
@@ -19,9 +21,11 @@ const CallBackPage = () => {
   parseCode();
 
   return (
-    <div>
-      <h2>로그인 중입니다!</h2>
-    </div>
+    <>
+      <LinearProgress />
+      <LoginLayout handleLoginBtn={null} isLoggingIn={true}/>
+    </>
+    
   );
 };
 
